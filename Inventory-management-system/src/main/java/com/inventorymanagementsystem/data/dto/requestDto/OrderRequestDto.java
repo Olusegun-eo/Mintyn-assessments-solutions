@@ -12,6 +12,7 @@ public class OrderRequestDto {
     private BigDecimal orderAmount;
     private String CustomerId;
     private double totalOrder;
+    private int productQuantity;
     private String address;
     private LocalDateTime createdAt = LocalDateTime.now();
     private String customerPhoneNumber;

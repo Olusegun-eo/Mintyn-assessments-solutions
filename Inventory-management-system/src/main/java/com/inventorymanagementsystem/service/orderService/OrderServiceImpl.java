@@ -4,6 +4,7 @@ package com.inventorymanagementsystem.service.orderService;
 import com.inventorymanagementsystem.data.dto.requestDto.OrderRequestDto;
 import com.inventorymanagementsystem.data.model.Order;
 import com.inventorymanagementsystem.data.model.Product;
+import com.inventorymanagementsystem.data.repository.CustomerRepository;
 import com.inventorymanagementsystem.data.repository.OrderRepository;
 import com.inventorymanagementsystem.data.repository.ProductRepository;
 import com.inventorymanagementsystem.web.exceptions.ProductDoesNotExistException;
@@ -13,9 +14,13 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 @Service
 public class OrderServiceImpl implements OrderService{
+
+    @Autowired
+    private CustomerRepository customerRepository;
 
     @Autowired
     private ProductRepository productRepository;
@@ -44,9 +49,18 @@ public class OrderServiceImpl implements OrderService{
         return 854.93;
     }
 
+    private boolean quantityIsValid(Product product, int quantity) {
+        return product.getProductQuantity() >= quantity;
+    }
+
+
     private Double calculateOrderPrice(Order order){
         return order.getProduct().getProductPrice() * order.getQuantityAdded();
     }
 
 
 }
+
+
+
+

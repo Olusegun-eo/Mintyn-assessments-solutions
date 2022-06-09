@@ -1,13 +1,16 @@
 package com.inventorymanagementsystem.data.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
-
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Entity(name = "customer")
 public class Customer {
