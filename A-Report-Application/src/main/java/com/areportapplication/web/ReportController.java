@@ -6,6 +6,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -25,10 +26,10 @@ public class ReportController {
     @PostMapping("{report}")
     public List<Object> getCatalogReport(@PathVariable("userId") String userId){
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.getForEntity("http://localhost:8080/orderAmount", Object.class);
+        restTemplate.getForEntity("localhost:8080/api/v1/order-amount", Object.class);
 
-        List<TotalOrder> amount = Arraays.asList();
+        List<TotalOrder> amount = Arrays.asList();
 
-        return "iu";
+        return Arrays.asList(amount.toArray());
     }
 }
